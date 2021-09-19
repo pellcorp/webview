@@ -14,6 +14,6 @@ public class WebViewClient extends android.webkit.WebViewClient {
     }
 
     public void onLoadResource(WebView view, String url) {
-        Log.d(TAG, url);
+        Log.i(TAG, url);
     }
 }

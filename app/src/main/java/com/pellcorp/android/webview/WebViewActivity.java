@@ -3,11 +3,14 @@ package com.pellcorp.android.webview;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class WebViewActivity extends Activity {
+    private static final String TAG = "WebViewActivity";
     private WebView webView;
 
     private Bundle savedInstanceState;
@@ -16,6 +19,8 @@ public class WebViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
         this.savedInstanceState = savedInstanceState;
+
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 	}
 
     @Override
@@ -82,6 +87,10 @@ public class WebViewActivity extends Activity {
 
         Preferences preferences = new Preferences(this);
         String url = preferences.getString(R.string.pref_url);
-        webView.loadUrl(url);
+        if (url != null) {
+            webView.loadUrl(url);
+        } else {
+            Log.i(TAG, "Url not configured");
+        }
     }
 }
