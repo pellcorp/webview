@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WebView</string>
+    <string name="settings_short_label">Settings</string>
+    <string name="settings_label">WebView Settings</string>
+
+    <string name="settings_shortcut">s</string>
+    
+    <string name="pref_url_title">Url</string>
+    <string name="pref_url_summary">Specify a url to load</string>
+    <string name="pref_url">webview_url</string>
+
+    <string name="settings_button">Settings</string>
+</resources>
