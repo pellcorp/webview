@@ -4,6 +4,8 @@ bin
 .settings
 *.apk
 .idea
+*.aab
+output-metadata.json
 gradle
 build
 *.iml
