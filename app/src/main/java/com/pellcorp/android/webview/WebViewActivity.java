@@ -2,6 +2,7 @@ package com.pellcorp.android.webview;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -19,8 +20,6 @@ public class WebViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
         this.savedInstanceState = savedInstanceState;
-
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 	}
 
     @Override
@@ -59,6 +58,11 @@ public class WebViewActivity extends Activity {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings:
@@ -71,10 +75,9 @@ public class WebViewActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        initWebView();
-    }
 
-    private void initWebView() {
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+
         if (webView == null) {
             setContentView(R.layout.webview);
 

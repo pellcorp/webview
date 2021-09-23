@@ -13,8 +13,7 @@
 
         <activity android:name=".WebViewActivity"
                   android:theme="@style/Theme.WebView"
-                  android:screenOrientation="landscape">
-
+                  android:configChanges="orientation|screenSize|screenLayout|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +22,6 @@
 
         <activity android:name=".PreferenceActivity"
                   android:label="@string/settings_label"
-                  android:theme="@style/Theme.Preferences"
-                  android:screenOrientation="landscape" />
+                  android:theme="@style/Theme.Preferences" />
     </application>
 </manifest>

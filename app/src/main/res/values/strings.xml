@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WebView</string>
+    <string name="app_name">Pellcorp WebView</string>
     <string name="settings_short_label">Settings</string>
-    <string name="settings_label">WebView Settings</string>
+    <string name="settings_label">Pellcorp WebView Settings</string>
 
     <string name="settings_shortcut">s</string>
     

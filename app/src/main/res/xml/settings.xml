@@ -3,7 +3,7 @@
     android:orderingFromXml="true">
     <PreferenceCategory android:title="@string/settings_label">
          <EditTextPreference
-            android:defaultValue="https://google.com"
+            android:defaultValue="https://github.com/pellcorp/"
             android:key="@string/pref_url"
             android:summary="@string/pref_url_summary"
             android:title="@string/pref_url_title" />
