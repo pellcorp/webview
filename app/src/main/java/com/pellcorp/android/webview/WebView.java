@@ -5,8 +5,17 @@ import android.content.pm.ApplicationInfo;
 import android.util.AttributeSet;
 
 public class WebView extends android.webkit.WebView {
+    private boolean scrolling;
+
     public WebView(final Context context) {
         this(context,null);
+    }
+
+    public void enableScrolling(final boolean scrolling) {
+        this.scrolling = scrolling;
+
+        this.setVerticalScrollBarEnabled(scrolling);
+        this.setHorizontalScrollBarEnabled(scrolling);
     }
 
     public WebView(final Context context, final AttributeSet attrs) {
@@ -26,6 +35,32 @@ public class WebView extends android.webkit.WebView {
         boolean isDebuggable = ( 0 != ( context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE ) );
         if (isDebuggable) {
             WebView.setWebContentsDebuggingEnabled(true);
+        }
+    }
+
+    // https://newbedev.com/disable-scrolling-in-webview
+    @Override
+    public boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY,
+                                int scrollRangeX, int scrollRangeY, int maxOverScrollX,
+                                int maxOverScrollY, boolean isTouchEvent) {
+        if (!scrolling) {
+            return false;
+        } else {
+            return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
+        }
+    }
+
+    @Override
+    public void scrollTo(int x, int y) {
+        if (scrolling) {
+            super.scrollTo(x, y);
+        }
+    }
+
+    @Override
+    public void computeScroll() {
+        if (scrolling) {
+            super.computeScroll();
         }
     }
 }

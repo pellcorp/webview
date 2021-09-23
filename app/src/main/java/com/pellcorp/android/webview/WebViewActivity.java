@@ -78,7 +78,7 @@ public class WebViewActivity extends Activity {
         if (webView == null) {
             setContentView(R.layout.webview);
 
-            webView = (WebView) findViewById(R.id.webView);
+            webView = findViewById(R.id.webView);
 
             if (savedInstanceState != null) {
                 webView.restoreState(savedInstanceState);
@@ -89,6 +89,9 @@ public class WebViewActivity extends Activity {
         String url = preferences.getString(R.string.pref_url);
         if (url != null) {
             webView.loadUrl(url);
+            final boolean scrollBars = preferences.getBoolean(R.string.pref_scrollbar);
+            webView.enableScrolling(scrollBars);
+
         } else {
             Log.i(TAG, "Url not configured");
         }
