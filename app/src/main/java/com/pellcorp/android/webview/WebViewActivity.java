@@ -15,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WebViewActivity extends AppCompatActivity {
     private static final String TAG = "WebViewActivity";
     private WebView webView;
-    private boolean fullscreen = false;
-    private Bundle savedInstanceState;
+     private Bundle savedInstanceState;
 
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,9 +69,6 @@ public class WebViewActivity extends AppCompatActivity {
             case R.id.settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 return true;
-            case R.id.fullscreen:
-                fullscreen = true;
-                return true;
         }
         return false;
     }
@@ -81,11 +77,7 @@ public class WebViewActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            if (fullscreen) {
-                hideSystemUI();
-            } else {
-                showSystemUI();
-            }
+            hideSystemUI();
         }
     }
 
@@ -99,17 +91,6 @@ public class WebViewActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                         | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
-    }
-
-    private void showSystemUI() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

@@ -4,7 +4,6 @@
 
     <string name="settings_short_label">Settings</string>
     <string name="settings_label">Pellcorp WebView Settings</string>
-    <string name="fullscreen_short_label">Fullscreen</string>
 
     <string name="pref_url_title">Url</string>
     <string name="pref_url_summary">Specify a url to load</string>
