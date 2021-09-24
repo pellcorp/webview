@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PreferenceActivity extends AppCompatActivity {
+public class PreferenceActivity extends Activity {
     private PreferenceFragment preferenceFragment = null;
 
     @Override
@@ -16,8 +16,8 @@ public class PreferenceActivity extends AppCompatActivity {
         preferenceFragment = new PreferenceFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, preferenceFragment).commit();
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pellcorp WebView</string>
+
     <string name="settings_short_label">Settings</string>
     <string name="settings_label">Pellcorp WebView Settings</string>
+    <string name="fullscreen_short_label">Fullscreen</string>
 
-    <string name="settings_shortcut">s</string>
-    
     <string name="pref_url_title">Url</string>
     <string name="pref_url_summary">Specify a url to load</string>
     <string name="pref_url">webview_url</string>
@@ -13,6 +13,4 @@
     <string name="pref_scrolling_title">Scolling</string>
     <string name="pref_scrolling_summary">Enable scrolling</string>
     <string name="pref_scrolling">webview_scrolling</string>
-
-    <string name="settings_button">Settings</string>
 </resources>

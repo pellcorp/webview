@@ -1,6 +1,5 @@
 package com.pellcorp.android.webview;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WebViewActivity extends AppCompatActivity {
     private static final String TAG = "WebViewActivity";
     private WebView webView;
-
+    private boolean fullscreen = false;
     private Bundle savedInstanceState;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -71,8 +70,46 @@ public class WebViewActivity extends AppCompatActivity {
             case R.id.settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 return true;
+            case R.id.fullscreen:
+                fullscreen = true;
+                return true;
         }
         return false;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            if (fullscreen) {
+                hideSystemUI();
+            } else {
+                showSystemUI();
+            }
+        }
+    }
+
+    // This snippet hides the system bars.
+    private void hideSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
+
+    private void showSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -81,9 +118,6 @@ public class WebViewActivity extends AppCompatActivity {
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         if (webView == null) {
             setContentView(R.layout.webview);
             webView = findViewById(R.id.webView);
@@ -91,10 +125,6 @@ public class WebViewActivity extends AppCompatActivity {
                 webView.restoreState(savedInstanceState);
             }
         }
-
-        // https://stackoverflow.com/a/28818260/2027558
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         Preferences preferences = new Preferences(this);
         String url = preferences.getString(R.string.pref_url);
