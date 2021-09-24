@@ -12,4 +12,8 @@
     <string name="pref_scrolling_title">Scolling</string>
     <string name="pref_scrolling_summary">Enable scrolling</string>
     <string name="pref_scrolling">webview_scrolling</string>
+
+    <string name="pref_external_links_title">External Links</string>
+    <string name="pref_external_links_summary">Links open in browser</string>
+    <string name="pref_external_links">webview_external_links</string>
 </resources>

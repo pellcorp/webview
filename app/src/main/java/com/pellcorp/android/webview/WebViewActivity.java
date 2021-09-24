@@ -96,7 +96,6 @@ public class WebViewActivity extends Activity {
         super.onResume();
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-
         if (webView == null) {
             setContentView(R.layout.webview);
             webView = findViewById(R.id.webView);

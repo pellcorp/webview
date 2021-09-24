@@ -13,5 +13,11 @@
             android:key="@string/pref_scrolling"
             android:summary="@string/pref_scrolling_summary"
             android:title="@string/pref_scrolling_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_external_links"
+            android:summary="@string/pref_external_links_summary"
+            android:title="@string/pref_external_links_title" />
     </PreferenceCategory>
 </PreferenceScreen>

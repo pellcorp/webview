@@ -26,9 +26,9 @@ public class WebView extends android.webkit.WebView {
         this.getSettings().setDomStorageEnabled(true);
         this.getSettings().setAllowFileAccess(false);
 
-        WebViewClient webClient = new WebViewClient(context);
+        final WebViewClient webClient = new WebViewClient(context);
         this.setWebViewClient(webClient);
-        WebViewChromeClient chromeClient = new WebViewChromeClient();
+        final WebViewChromeClient chromeClient = new WebViewChromeClient(context);
         this.setWebChromeClient(chromeClient);
 
         // https://stackoverflow.com/a/23844693

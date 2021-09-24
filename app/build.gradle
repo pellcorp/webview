@@ -24,7 +24,3 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
-dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-}
