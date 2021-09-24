@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class PreferenceActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PreferenceActivity extends AppCompatActivity {
     private PreferenceFragment preferenceFragment = null;
 
     @Override
@@ -13,6 +15,9 @@ public class PreferenceActivity extends Activity {
         super.onCreate(savedInstanceState);
         preferenceFragment = new PreferenceFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, preferenceFragment).commit();
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

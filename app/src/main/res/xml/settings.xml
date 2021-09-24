@@ -10,8 +10,8 @@
 
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="@string/pref_scrollbar"
-            android:summary="@string/pref_scrollbar_summary"
-            android:title="@string/pref_scrollbar_title" />
+            android:key="@string/pref_scrolling"
+            android:summary="@string/pref_scrolling_summary"
+            android:title="@string/pref_scrolling_title" />
     </PreferenceCategory>
 </PreferenceScreen>

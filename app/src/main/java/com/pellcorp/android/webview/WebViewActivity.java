@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-public class WebViewActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class WebViewActivity extends AppCompatActivity {
     private static final String TAG = "WebViewActivity";
     private WebView webView;
 
@@ -78,23 +81,26 @@ public class WebViewActivity extends Activity {
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         if (webView == null) {
             setContentView(R.layout.webview);
-
             webView = findViewById(R.id.webView);
-
             if (savedInstanceState != null) {
                 webView.restoreState(savedInstanceState);
             }
         }
 
+        // https://stackoverflow.com/a/28818260/2027558
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
         Preferences preferences = new Preferences(this);
         String url = preferences.getString(R.string.pref_url);
         if (url != null) {
+            webView.enableScrolling(preferences.getBoolean(R.string.pref_scrolling));
             webView.loadUrl(url);
-            final boolean scrollBars = preferences.getBoolean(R.string.pref_scrollbar);
-            webView.enableScrolling(scrollBars);
-
         } else {
             Log.i(TAG, "Url not configured");
         }
