@@ -1,5 +1,6 @@
 package com.pellcorp.android.webview;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,9 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends Activity {
     private static final String TAG = "WebViewActivity";
     private WebView webView;
      private Bundle savedInstanceState;
@@ -81,7 +80,6 @@ public class WebViewActivity extends AppCompatActivity {
         }
     }
 
-    // This snippet hides the system bars.
     private void hideSystemUI() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
