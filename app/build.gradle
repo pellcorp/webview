@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         // https://www.appbrain.com/stats/top-android-sdk-versions
-        // anything below lollipop hardly seems worth it
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion 26
+        targetSdkVersion 31
         versionName version
     }
 
@@ -24,3 +23,4 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+

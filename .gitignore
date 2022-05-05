@@ -6,10 +6,7 @@ bin
 .idea
 *.aab
 output-metadata.json
-gradle
 build
 *.iml
 .gradle
-gradlew
-gradlew.bat
 local.properties

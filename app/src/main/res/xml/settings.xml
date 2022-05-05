@@ -2,6 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
     android:orderingFromXml="true">
     <PreferenceCategory android:title="@string/settings_label">
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="@string/pref_pin"
+            android:inputType="numberPassword"
+            android:summary="@string/pref_pin_summary"
+            android:title="@string/pref_pin_title"
+            android:maxLength="4" />
+
          <EditTextPreference
             android:defaultValue="https://github.com/pellcorp/"
             android:key="@string/pref_url"
@@ -15,7 +23,7 @@
             android:title="@string/pref_scrolling_title" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="@string/pref_external_links"
             android:summary="@string/pref_external_links_summary"
             android:title="@string/pref_external_links_title" />

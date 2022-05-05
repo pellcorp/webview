@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.pellcorp.android.webview.WebView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/webView"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:theme="@android:style/Theme.DeviceDefault"
-/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.pellcorp.android.webview.WebView
+        android:id="@+id/webView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ProgressBar
+            xmlns:tools="http://schemas.android.com/tools"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="bottom"
+            android:indeterminate="false"
+            android:forceDarkAllowed="false"
+            android:id="@+id/progressBar"
+            tools:ignore="UnusedAttribute" />
+    </com.pellcorp.android.webview.WebView>
+</RelativeLayout>

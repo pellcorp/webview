@@ -38,10 +38,11 @@ public class PreferenceFragment extends android.preference.PreferenceFragment im
 
     private void updatePreference(Preference preference) {
         if (preference instanceof EditTextPreference) {
-            EditTextPreference listPreference = (EditTextPreference) preference;
+            final EditTextPreference listPreference = (EditTextPreference) preference;
 
-            if(listPreference.getEditText().getTransformationMethod() != PasswordTransformationMethod.getInstance() )
+            if(listPreference.getEditText().getTransformationMethod() != PasswordTransformationMethod.getInstance() ) {
                 listPreference.setSummary(listPreference.getText());
+            }
         }
     }
 }

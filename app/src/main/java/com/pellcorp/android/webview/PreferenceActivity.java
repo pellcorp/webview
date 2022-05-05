@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class PreferenceActivity extends Activity {
-    private PreferenceFragment preferenceFragment = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferenceFragment = new PreferenceFragment();
+        final PreferenceFragment preferenceFragment = new PreferenceFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, preferenceFragment).commit();
     }
 

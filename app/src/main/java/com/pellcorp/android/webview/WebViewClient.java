@@ -2,9 +2,8 @@ package com.pellcorp.android.webview;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Bitmap;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
 public class WebViewClient extends android.webkit.WebViewClient {
@@ -12,9 +11,11 @@ public class WebViewClient extends android.webkit.WebViewClient {
 
     private final Context context;
     private final Preferences preferences;
+    private final PageLoadListener pageLoadedListener;
 
-    public WebViewClient(final Context context) {
+    public WebViewClient(final Context context, final PageLoadListener pageLoadedListener) {
         this.context = context;
+        this.pageLoadedListener = pageLoadedListener;
         preferences = new Preferences(context);
     }
 
@@ -27,5 +28,22 @@ public class WebViewClient extends android.webkit.WebViewClient {
             return true;
         }
         return false;
+    }
+
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+
+        if (pageLoadedListener != null) {
+            pageLoadedListener.onPageStarted();
+        }
+    }
+
+    @Override
+    public void onPageFinished(android.webkit.WebView view, String url) {
+        super.onPageFinished(view, url);
+
+        if (pageLoadedListener != null) {
+            pageLoadedListener.onPageFinished(view.getTitle());
+        }
     }
 }

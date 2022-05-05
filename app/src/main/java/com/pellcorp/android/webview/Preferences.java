@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class Preferences {
-    private Context ctx;
-    private SharedPreferences preferences;
+    private final Context ctx;
+    private final SharedPreferences preferences;
 
     public Preferences(Context ctx) {
         this.ctx = ctx;
