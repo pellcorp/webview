@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def versionMajor = 0
+def versionMinor = 2
+def versionPatch = 7
+
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
@@ -8,13 +12,24 @@ android {
         // https://www.appbrain.com/stats/top-android-sdk-versions
         minSdkVersion 26
         targetSdkVersion 31
-        versionName version
+
+        versionCode "${versionMajor}${versionMinor}${versionPatch}".toInteger()
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            resValue "string", "app_version",
+                "${defaultConfig.versionName}"
+        }
+
+        debug {
+            versionNameSuffix ".debug"
+            resValue "string", "app_version",
+                    "${defaultConfig.versionName}${versionNameSuffix}"
         }
     }
 

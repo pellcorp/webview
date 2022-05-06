@@ -13,6 +13,7 @@
          <EditTextPreference
             android:defaultValue="https://github.com/pellcorp/"
             android:key="@string/pref_url"
+             android:inputType="textUri"
             android:summary="@string/pref_url_summary"
             android:title="@string/pref_url_title" />
 
