@@ -36,6 +36,10 @@ public class WebView extends android.webkit.WebView {
         this.getSettings().setDomStorageEnabled(true);
         this.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 
+        this.getSettings().setSupportZoom(true);
+        this.getSettings().setBuiltInZoomControls(true);
+        this.getSettings().setDisplayZoomControls(false);
+
         CookieManager.getInstance().setAcceptCookie(true);
 
         final WebViewClient webClient = new WebViewClient(context, this.delegate);
