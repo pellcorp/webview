@@ -13,13 +13,13 @@ public class WebViewChromeClient extends android.webkit.WebChromeClient {
     }
 
     @Override
-    public void onReceivedIcon(android.webkit.WebView view, Bitmap icon) {
+    public void onReceivedIcon(final android.webkit.WebView view, final Bitmap icon) {
         super.onReceivedIcon(view, icon);
         pageLoadedListener.onReceiveIcon(icon);
     }
 
     @Override
-    public void onProgressChanged(android.webkit.WebView view, int progress) {
+    public void onProgressChanged(final android.webkit.WebView view, final int progress) {
         pageLoadedListener.onProgressChanged(progress);
     }
 }

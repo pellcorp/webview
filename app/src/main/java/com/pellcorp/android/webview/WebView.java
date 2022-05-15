@@ -63,16 +63,16 @@ public class WebView extends android.webkit.WebView {
     }
 
     @Override
-    public void loadUrl(String url) {
+    public void loadUrl(final String url) {
         this.currentUrl = url;
         super.loadUrl(url);
     }
 
     // https://newbedev.com/disable-scrolling-in-webview
     @Override
-    public boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY,
-                                int scrollRangeX, int scrollRangeY, int maxOverScrollX,
-                                int maxOverScrollY, boolean isTouchEvent) {
+    public boolean overScrollBy(final int deltaX, final int deltaY, final int scrollX, final int scrollY,
+                                final int scrollRangeX, final int scrollRangeY, final int maxOverScrollX,
+                                final int maxOverScrollY, final boolean isTouchEvent) {
         if (!scrolling) {
             return false;
         } else {
@@ -81,7 +81,7 @@ public class WebView extends android.webkit.WebView {
     }
 
     @Override
-    public void scrollTo(int x, int y) {
+    public void scrollTo(final int x, final int y) {
         if (scrolling) {
             super.scrollTo(x, y);
         }

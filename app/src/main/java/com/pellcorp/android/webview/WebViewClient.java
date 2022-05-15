@@ -20,7 +20,7 @@ public class WebViewClient extends android.webkit.WebViewClient {
     }
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest url) {
+    public boolean shouldOverrideUrlLoading(final WebView view, final WebResourceRequest url) {
         final boolean externalLinks = preferences.getBoolean(R.string.pref_external_links);
         if (externalLinks) {
             final Intent intent = new Intent(Intent.ACTION_VIEW, url.getUrl());
@@ -30,16 +30,16 @@ public class WebViewClient extends android.webkit.WebViewClient {
         return false;
     }
 
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+    public void onPageStarted(final WebView view, final String url, final Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
 
         if (pageLoadedListener != null) {
-            pageLoadedListener.onPageStarted();
+            pageLoadedListener.onPageStarted(url);
         }
     }
 
     @Override
-    public void onPageFinished(android.webkit.WebView view, String url) {
+    public void onPageFinished(final android.webkit.WebView view, final String url) {
         super.onPageFinished(view, url);
 
         if (pageLoadedListener != null) {
