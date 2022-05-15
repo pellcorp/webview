@@ -32,7 +32,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     private String pageTitle = null;
     private boolean currently_reloading = true;
 
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
@@ -47,7 +47,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
 	}
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(final Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         if (webView != null) {
@@ -65,7 +65,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         super.onCreateOptionsMenu(menu);
 
         final MenuInflater inflater = getMenuInflater();
@@ -74,7 +74,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
 
         if (webView != null) {
@@ -83,7 +83,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         if (item.getItemId() == R.id.settings) {
             final Preferences preferences = new Preferences(this);
             final String currentPin = preferences.getString(R.string.pref_pin);
@@ -165,7 +165,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(final Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -176,11 +176,11 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    public void onPageStarted() {
+    public void onPageStarted(final String url) {
         currently_reloading = true;
         pageTitle = null;
         pageFavicon = null;
-        getActionBar().setTitle("");
+        getActionBar().setTitle(url);
         getActionBar().setDisplayUseLogoEnabled(false);
         getActionBar().setDisplayShowHomeEnabled(false);
     }
@@ -189,6 +189,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     public void onPageFinished(final String title) {
         if (pageTitle == null) {
             pageTitle = title;
+            getActionBar().setTitle(pageTitle);
         }
     }
 
@@ -208,7 +209,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     }
 
     @Override
-    public void onReceiveIcon(Bitmap icon) {
+    public void onReceiveIcon(final Bitmap icon) {
         if (isBetterBitmap(icon)) {
             Log.i(TAG, "Icon received as " + icon.getHeight() + "x" + icon.getWidth());
             this.pageFavicon = icon; // this is the original bit map
@@ -226,7 +227,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
         }
     }
 
-    private boolean isBetterBitmap(Bitmap icon) {
+    private boolean isBetterBitmap(final Bitmap icon) {
         if (icon == null) {
             return false;
         }

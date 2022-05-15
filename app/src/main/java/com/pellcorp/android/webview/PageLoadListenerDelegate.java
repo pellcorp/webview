@@ -17,23 +17,23 @@ public class PageLoadListenerDelegate implements PageLoadListener {
     }
 
     @Override
-    public void onReceiveIcon(Bitmap icon) {
+    public void onReceiveIcon(final Bitmap icon) {
         if (delegate != null) {
             delegate.onReceiveIcon(icon);
         }
     }
 
     @Override
-    public void onProgressChanged(int progress) {
+    public void onProgressChanged(final int progress) {
         if (delegate != null) {
             delegate.onProgressChanged(progress);
         }
     }
 
     @Override
-    public void onPageStarted() {
+    public void onPageStarted(final String url) {
         if (delegate != null) {
-            delegate.onPageStarted();
+            delegate.onPageStarted(url);
         }
     }
 }

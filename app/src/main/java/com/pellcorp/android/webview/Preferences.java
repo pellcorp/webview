@@ -8,16 +8,16 @@ public class Preferences {
     private final Context ctx;
     private final SharedPreferences preferences;
 
-    public Preferences(Context ctx) {
+    public Preferences(final Context ctx) {
         this.ctx = ctx;
         this.preferences = PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 
-    public boolean getBoolean(int resId) {
+    public boolean getBoolean(final int resId) {
         return preferences.getBoolean(ctx.getString(resId), true);
     }
 
-    public String getString(int resId) {
+    public String getString(final int resId) {
         String value = preferences.getString(ctx.getString(resId), null);
         if (value != null && value.length() == 0) {
             return null;

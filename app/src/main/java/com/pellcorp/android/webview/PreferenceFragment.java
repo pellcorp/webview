@@ -12,7 +12,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment im
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.settings);
@@ -21,11 +21,11 @@ public class PreferenceFragment extends android.preference.PreferenceFragment im
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
         updatePreference(findPreference(key));
     }
 
-    private void initSummary(Preference p) {
+    private void initSummary(final Preference p) {
         if (p instanceof PreferenceGroup) {
             PreferenceGroup pGrp = (PreferenceGroup) p;
             for (int i = 0; i < pGrp.getPreferenceCount(); i++) {
@@ -36,7 +36,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment im
         }
     }
 
-    private void updatePreference(Preference preference) {
+    private void updatePreference(final Preference preference) {
         if (preference instanceof EditTextPreference) {
             final EditTextPreference listPreference = (EditTextPreference) preference;
 
