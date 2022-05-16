@@ -189,7 +189,6 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     public void onPageFinished(final String title) {
         if (pageTitle == null) {
             pageTitle = title;
-            getActionBar().setTitle(pageTitle);
         }
     }
 
