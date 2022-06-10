@@ -220,7 +220,7 @@ public class WebViewActivity extends Activity implements PageLoadListener {
         }
 
         final String theTitle = " " + pageTitle;
-        if (!theTitle.equals(getActionBar().getTitle())) {
+        if (!theTitle.contentEquals(getActionBar().getTitle())) {
             getActionBar().setTitle(" " + pageTitle);
             hideSystemBars();
         }
