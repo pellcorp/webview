@@ -3,6 +3,7 @@ package com.pellcorp.android.webview;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.util.AttributeSet;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 
@@ -91,6 +92,14 @@ public class WebView extends android.webkit.WebView {
     public void computeScroll() {
         if (scrolling) {
             super.computeScroll();
+        }
+    }
+
+    // https://stackoverflow.com/questions/47812876/webview-media-content-stops-when-the-screen-is-locked-activitys-onstop-is-cal
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        if (visibility != View.GONE && visibility != View.INVISIBLE) {
+            super.onWindowVisibilityChanged(visibility);
         }
     }
 }

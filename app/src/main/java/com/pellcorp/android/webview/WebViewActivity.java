@@ -1,5 +1,7 @@
 package com.pellcorp.android.webview;
 
+import static android.util.Log.DEBUG;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -210,7 +212,9 @@ public class WebViewActivity extends Activity implements PageLoadListener {
     @Override
     public void onReceiveIcon(final Bitmap icon) {
         if (isBetterBitmap(icon)) {
-            Log.i(TAG, "Icon received as " + icon.getHeight() + "x" + icon.getWidth());
+            if (Log.isLoggable(TAG, DEBUG)) {
+                Log.d(TAG, "Icon received as " + icon.getHeight() + "x" + icon.getWidth());
+            }
             this.pageFavicon = icon; // this is the original bit map
             final Bitmap bitmap = icon.getHeight() == 64 ? this.pageFavicon : Bitmap.createScaledBitmap(this.pageFavicon, 64, 64, false);
             final BitmapDrawable theIcon = new BitmapDrawable(getResources(), bitmap);
